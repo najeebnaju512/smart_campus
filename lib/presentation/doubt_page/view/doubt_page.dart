@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/color_constants.dart';
-import '../../user_page/view/user_page.dart';
 
 class DoubtPage extends StatelessWidget {
   const DoubtPage({super.key});

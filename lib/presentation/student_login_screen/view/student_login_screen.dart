@@ -14,7 +14,7 @@ class StudentLoginScree extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height,
+          height: screenHeight,
           decoration: BoxDecoration(
               gradient: LinearGradient(colors: ColorConstants.gradientColors)),
           child: Padding(
@@ -83,13 +83,13 @@ class StudentLoginScree extends StatelessWidget {
                   padding: EdgeInsets.only(left: 16, right: 16),
                   child: ElevatedButton(
                     style: ButtonStyle(
-                      minimumSize: MaterialStatePropertyAll(
+                      minimumSize: WidgetStatePropertyAll(
                         Size(220, 60),
                       ),
-                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                      shape: WidgetStatePropertyAll(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
                       backgroundColor:
-                          MaterialStatePropertyAll(ColorConstants.primaryColor),
+                          WidgetStatePropertyAll(ColorConstants.primaryColor),
                     ),
                     onPressed: () {
                       Navigator.push(context,
@@ -109,11 +109,11 @@ class StudentLoginScree extends StatelessWidget {
                 ),
                 ElevatedButton(
                   style: ButtonStyle(
-                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                      shape: WidgetStatePropertyAll(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
-                      minimumSize: MaterialStatePropertyAll(Size(80, 25)),
+                      minimumSize: WidgetStatePropertyAll(Size(80, 25)),
                       backgroundColor:
-                          MaterialStateProperty.all(ColorConstants.mainBlack)),
+                          WidgetStateProperty.all(ColorConstants.mainBlack)),
                   onPressed: () {
                     Navigator.push(
                         context,
