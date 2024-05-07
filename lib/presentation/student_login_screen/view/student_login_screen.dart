@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_campus_projects/core/constants/color_constants.dart';
-import 'package:smart_campus_projects/presentation/global_widgets/reusable_textfield_widget.dart';
+import 'package:smart_campus_projects/global_widgets/reusable_textfield_widget.dart';
 
 import '../../user_page/view/user_page.dart';
 
