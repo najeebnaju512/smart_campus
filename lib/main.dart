@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:smart_campus_projects/common_screen/splash_screen/view/splash_screen.dart';
+import 'package:smart_campus_projects/presentation/common_screen/splash_screen/view/splash_screen.dart';
 
 void main() {
   runApp(MyApp());
