@@ -83,13 +83,13 @@ class StudentLoginScree extends StatelessWidget {
                   padding: EdgeInsets.only(left: 16, right: 16),
                   child: ElevatedButton(
                     style: ButtonStyle(
-                      minimumSize: WidgetStatePropertyAll(
+                      minimumSize: MaterialStatePropertyAll(
                         Size(220, 60),
                       ),
-                      shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
                       backgroundColor:
-                          WidgetStatePropertyAll(ColorConstants.primaryColor),
+                          MaterialStatePropertyAll(ColorConstants.primaryColor),
                     ),
                     onPressed: () {
                       Navigator.push(context,
@@ -109,11 +109,11 @@ class StudentLoginScree extends StatelessWidget {
                 ),
                 ElevatedButton(
                   style: ButtonStyle(
-                      shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
-                      minimumSize: WidgetStatePropertyAll(Size(80, 25)),
+                      minimumSize: MaterialStatePropertyAll(Size(80, 25)),
                       backgroundColor:
-                          WidgetStateProperty.all(ColorConstants.mainBlack)),
+                          MaterialStateProperty.all(ColorConstants.mainBlack)),
                   onPressed: () {
                     Navigator.push(
                         context,
