@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:smart_campus_projects/core/constants/color_constants.dart';
 import 'package:smart_campus_projects/global_widgets/reusable_textfield_widget.dart';
 
-import '../../user_page/view/user_page.dart';
+import '../controller/student_login_controller.dart';
 
 class StudentLoginScree extends StatelessWidget {
   const StudentLoginScree({super.key});
@@ -11,6 +12,8 @@ class StudentLoginScree extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
+    var idController = TextEditingController();
+    var passController = TextEditingController();
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -49,6 +52,7 @@ class StudentLoginScree extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 16, right: 16),
                   child: ReusableTextFieldWidget(
+                    controller: idController,
                     hinttext: "♦️ID Number",
                     name: "ID Number",
                     decoration: InputDecoration(
@@ -61,6 +65,7 @@ class StudentLoginScree extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 16, right: 16),
                   child: ReusableTextFieldWidget(
+                    controller: passController,
                     autofocus: false,
                     hinttext: "♦️Password",
                     name: "Password",
@@ -80,52 +85,59 @@ class StudentLoginScree extends StatelessWidget {
                   height: 30,
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 16, right: 16),
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      minimumSize: MaterialStatePropertyAll(
-                        Size(220, 60),
-                      ),
-                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10))),
-                      backgroundColor:
-                          MaterialStatePropertyAll(ColorConstants.primaryColor),
-                    ),
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => UserPage()));
-                    },
-                    child: Text(
-                      "Login",
-                      style: TextStyle(
-                          color: ColorConstants.mainWhite,
-                          fontFamily: "Nexa Bold",
-                          fontSize: screenWidth / 16),
-                    ),
-                  ),
-                ),
+                    padding: EdgeInsets.only(left: 16, right: 16),
+                    child: Consumer<StudentLoginController>(
+                      builder: (context, control, _) {
+                        return ElevatedButton(
+                          style: ButtonStyle(
+                            minimumSize: MaterialStatePropertyAll(
+                              Size(220, 60),
+                            ),
+                            shape: MaterialStatePropertyAll(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10))),
+                            backgroundColor: MaterialStatePropertyAll(
+                                ColorConstants.primaryColor),
+                          ),
+                          onPressed: () {
+                            control.onlogin(
+                              context,
+                                id: idController.text.trim(),
+                                pass: passController.text.trim());
+
+                          },
+                          child: Text(
+                            "Login",
+                            style: TextStyle(
+                                color: ColorConstants.mainWhite,
+                                fontFamily: "Nexa Bold",
+                                fontSize: screenWidth / 16),
+                          ),
+                        );
+                      },
+                    )),
                 const SizedBox(
                   height: 30,
                 ),
-                ElevatedButton(
-                  style: ButtonStyle(
-                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10))),
-                      minimumSize: MaterialStatePropertyAll(Size(80, 25)),
-                      backgroundColor:
-                          MaterialStateProperty.all(ColorConstants.mainBlack)),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => StudentLoginScree()));
-                  },
-                  child: Text(
-                    "Exit",
-                    style: TextStyle(
-                        color: ColorConstants.mainWhite, fontSize: 20),
-                  ),
-                ),
+                // ElevatedButton(
+                //   style: ButtonStyle(
+                //       shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                //           borderRadius: BorderRadius.circular(10))),
+                //       minimumSize: MaterialStatePropertyAll(Size(80, 25)),
+                //       backgroundColor:
+                //           MaterialStateProperty.all(ColorConstants.mainBlack)),
+                //   onPressed: () {
+                //     Navigator.push(
+                //         context,
+                //         MaterialPageRoute(
+                //             builder: (context) => StudentLoginScree()));
+                //   },
+                //   child: Text(
+                //     "Exit",
+                //     style: TextStyle(
+                //         color: ColorConstants.mainWhite, fontSize: 20),
+                //   ),
+                // ),
                 Spacer(),
                 Row(
                   children: [
