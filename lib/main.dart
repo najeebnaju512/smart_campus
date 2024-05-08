@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:smart_campus_projects/presentation/common_screen/splash_screen/view/splash_screen.dart';
 
+import 'presentation/student_login_screen/controller/student_login_controller.dart';
+
 void main() {
-  runApp(MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => StudentLoginController()),
+      // ChangeNotifierProvider(create: (context) => ),
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -11,9 +20,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp( theme: ThemeData(
-      appBarTheme: Theme.of(context).appBarTheme.copyWith(systemOverlayStyle:SystemUiOverlayStyle.light),
-    ),
+    return MaterialApp(
+      theme: ThemeData(
+        appBarTheme: Theme.of(context)
+            .appBarTheme
+            .copyWith(systemOverlayStyle: SystemUiOverlayStyle.light),
+      ),
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
     );
