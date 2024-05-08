@@ -7,7 +7,8 @@ import 'package:smart_campus_projects/config/app_config.dart';
 import 'package:smart_campus_projects/core/utils/app_utils.dart';
 import 'package:smart_campus_projects/repository/api/student_login_screen/service/student_login_service.dart';
 
-import '../../user_page/view/user_page.dart';
+import '../../profile_page/view/profile_page.dart';
+
 
 class StudentLoginController extends ChangeNotifier {
   bool visibility = false;
@@ -20,7 +21,7 @@ class StudentLoginController extends ChangeNotifier {
       log("token -> ${resData["data"]["access_token"]}");
       if (resData["status"] == 1) {
         storeLoginData(resData);
-        Navigator.push(context, MaterialPageRoute(builder: (context) => UserPage()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
         AppUtils.getAccessKey();
       } else {
         AppUtils.oneTimeSnackBar("Login Failed", context: context);
