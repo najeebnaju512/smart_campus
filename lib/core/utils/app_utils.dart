@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
 
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -9,16 +8,15 @@ import '../../config/app_config.dart';
 
 class AppUtils {
   late SharedPreferences sharedPreferences;
+
   //to get access key
   static Future<String?> getAccessKey() async {
     final sharedPreferences = await SharedPreferences.getInstance();
-    log("getAccessKey() sharedprefrence object created");
+    log("AppUtils -> getAccessKey() sharedPreferences object created");
 
     if (sharedPreferences.get(AppConfig.loginData) != null) {
-      log("getAccessKey()->checked if AppConfig.LOGIN_DATA is null");
-      final access = jsonDecode(
-          sharedPreferences.get(AppConfig.loginData) as String)['access'];
-      log("stored 'access' from AppConfig.LOGIN_DATA to access in getAccessKey() ");
+      final access = jsonDecode(sharedPreferences.get(AppConfig.loginData) as String)['data']["access_token"];
+      log("access_token -> $access");
       return access;
     } else {
       log("getAccessKey() returned null");
@@ -26,7 +24,7 @@ class AppUtils {
     }
   }
 
-
+  //show Snackbar
   static oneTimeSnackBar(
     String? message, {
     int time = 2,
@@ -42,21 +40,12 @@ class AppUtils {
         // ScaffoldMessenger.of(context??Routes.router.routerDelegate.navigatorKey.currentState!.context)
         .showSnackBar(
       SnackBar(
-        /*action:SnackBarAction(label: "Ok",
-        onPressed: (){
-          SystemSettings.internalStorage();
-        },
-        ) ,*/
-
         behavior: showOnTop ? SnackBarBehavior.floating : null,
         backgroundColor: bgColor ?? Colors.white60,
-        content: Text(message!, style: textStyle ),
+        content: Text(message!, style: textStyle),
         duration: Duration(seconds: time),
         margin: showOnTop
-            ? EdgeInsets.only(
-                bottom: MediaQuery.of(context).size.height - 100,
-                right: 20,
-                left: 20)
+            ? EdgeInsets.only(bottom: MediaQuery.of(context).size.height - 100, right: 20, left: 20)
             : null,
       ),
     );

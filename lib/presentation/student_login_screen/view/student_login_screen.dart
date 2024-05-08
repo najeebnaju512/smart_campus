@@ -5,21 +5,27 @@ import 'package:smart_campus_projects/global_widgets/reusable_textfield_widget.d
 
 import '../controller/student_login_controller.dart';
 
-class StudentLoginScree extends StatelessWidget {
+class StudentLoginScree extends StatefulWidget {
   const StudentLoginScree({super.key});
+
+  @override
+  State<StudentLoginScree> createState() => _StudentLoginScreeState();
+}
+
+class _StudentLoginScreeState extends State<StudentLoginScree> {
+  var idController = TextEditingController();
+  var passController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
-    var idController = TextEditingController();
-    var passController = TextEditingController();
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
           height: screenHeight,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(colors: ColorConstants.gradientColors)),
+          decoration: BoxDecoration(gradient: LinearGradient(colors: ColorConstants.gradientColors)),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Column(
@@ -57,8 +63,7 @@ class StudentLoginScree extends StatelessWidget {
                     name: "ID Number",
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30)),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
                     ),
                   ),
                 ),
@@ -72,8 +77,7 @@ class StudentLoginScree extends StatelessWidget {
                     decoration: InputDecoration(
                       fillColor: ColorConstants.mainWhite,
                       filled: true,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30)),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.orange),
                       ),
@@ -94,17 +98,12 @@ class StudentLoginScree extends StatelessWidget {
                               Size(220, 60),
                             ),
                             shape: MaterialStatePropertyAll(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10))),
-                            backgroundColor: MaterialStatePropertyAll(
-                                ColorConstants.primaryColor),
+                                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                            backgroundColor: MaterialStatePropertyAll(ColorConstants.primaryColor),
                           ),
                           onPressed: () {
-                            control.onlogin(
-                              context,
-                                id: idController.text.trim(),
-                                pass: passController.text.trim());
-
+                            control.onLogin(context,
+                                id: idController.text.trim(), pass: passController.text.trim());
                           },
                           child: Text(
                             "Login",

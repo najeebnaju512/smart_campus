@@ -1,26 +1,39 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smart_campus_projects/config/app_config.dart';
 import 'package:smart_campus_projects/core/utils/app_utils.dart';
 import 'package:smart_campus_projects/repository/api/student_login_screen/service/student_login_service.dart';
 
 import '../../user_page/view/user_page.dart';
 
 class StudentLoginController extends ChangeNotifier {
-  onlogin(BuildContext context, {required String id, required String pass}) {
+  bool visibility = false;
+  late SharedPreferences sharedPreferences;
+
+  onLogin(BuildContext context, {required String id, required String pass}) {
+    log("StudentLoginController -> onLogin()");
     var data = {"admission_number": id, "password": pass};
-    try {
-      StudentloginService.postLogin(data).then((resData) {
-        if (resData["status"] == 1) {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => UserPage()));
-        } else {
-          AppUtils.oneTimeSnackBar("Login Failed", context: context);
-        }
-      });
+    StudentloginService.postLogin(data).then((resData) {
+      log("token -> ${resData["data"]["access_token"]}");
+      if (resData["status"] == 1) {
+        storeLoginData(resData);
+        Navigator.push(context, MaterialPageRoute(builder: (context) => UserPage()));
+        AppUtils.getAccessKey();
+      } else {
+        AppUtils.oneTimeSnackBar("Login Failed", context: context);
+      }
       notifyListeners();
-    } catch (e) {
-      log("$e");
-    }
+    });
+  }
+
+  storeLoginData(receivedData) async {
+    log("StudentLoginController -> storeLoginData()");
+    sharedPreferences = await SharedPreferences.getInstance();
+    String storeData = jsonEncode(receivedData);
+    log("storedData -> $storeData");
+    sharedPreferences.setString(AppConfig.loginData, storeData);
   }
 }
