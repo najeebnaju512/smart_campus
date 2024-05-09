@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_campus_projects/core/constants/color_constants.dart';
-import 'package:smart_campus_projects/presentation/students/student_login_screen/view/student_login_screen.dart';
+import 'package:smart_campus_projects/presentation/students_module/student_login_screen/view/student_login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

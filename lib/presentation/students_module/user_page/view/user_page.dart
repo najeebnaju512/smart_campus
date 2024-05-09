@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:smart_campus_projects/core/constants/color_constants.dart';
-import 'package:smart_campus_projects/presentation/students/doubt_page/view/doubt_page.dart';
+import 'package:smart_campus_projects/presentation/students_module/doubt_page/view/doubt_page.dart';
 
 class UserPage extends StatelessWidget {
   const UserPage({super.key});
