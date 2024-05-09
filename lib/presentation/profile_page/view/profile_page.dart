@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_campus_projects/core/constants/color_constants.dart';
-import 'package:smart_campus_projects/presentation/doubt_page/view/doubt_page.dart';
 import 'package:smart_campus_projects/presentation/profile_page/controller/profile_page_controller.dart';
 
 import '../../../config/app_config.dart';
+import '../../students_module/doubt_page/view/doubt_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});

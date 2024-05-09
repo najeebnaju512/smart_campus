@@ -7,7 +7,8 @@ import 'package:smart_campus_projects/config/app_config.dart';
 import 'package:smart_campus_projects/core/utils/app_utils.dart';
 import 'package:smart_campus_projects/repository/api/student_login_screen/service/student_login_service.dart';
 
-import '../../profile_page/view/profile_page.dart';
+import '../../../profile_page/view/profile_page.dart';
+
 
 
 class StudentLoginController extends ChangeNotifier {
