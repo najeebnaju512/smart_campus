@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:smart_campus_projects/presentation/students_module/doubt_page/controller/doubt_controller.dart';
 
 import '../../../../core/constants/color_constants.dart';
 
-class DoubtPage extends StatelessWidget {
+class DoubtPage extends StatefulWidget {
   const DoubtPage({super.key});
 
+  @override
+  State<DoubtPage> createState() => _DoubtPageState();
+}
+
+class _DoubtPageState extends State<DoubtPage> {
+  var msgController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,6 +77,7 @@ class DoubtPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: TextField(
+                        controller: msgController,
                         maxLines: 20,
                         // TextField properties can be added here
                         decoration: InputDecoration(
@@ -80,22 +89,28 @@ class DoubtPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                ElevatedButton(
-                  style: ButtonStyle(
-                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10))),
-                      // minimumSize: MaterialStatePropertyAll(Size(200, 90)),
-                      backgroundColor: MaterialStateProperty.all(
-                          ColorConstants.primaryColor)),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => DoubtPage()));
+                Consumer<DoubtController>(
+                  builder: (context, controller, child) {
+                    return ElevatedButton(
+                      style: ButtonStyle(
+                          shape: MaterialStatePropertyAll(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10))),
+                          // minimumSize: MaterialStatePropertyAll(Size(200, 90)),
+                          backgroundColor: MaterialStateProperty.all(
+                              ColorConstants.primaryColor)),
+                      onPressed: () {
+                        controller.postMsg(context,
+                            msg: msgController.text.trim());
+                        msgController.clear();
+                      },
+                      child: Text(
+                        "Send",
+                        style: TextStyle(
+                            color: ColorConstants.mainWhite, fontSize: 20),
+                      ),
+                    );
                   },
-                  child: Text(
-                    "Send",
-                    style: TextStyle(
-                        color: ColorConstants.mainWhite, fontSize: 20),
-                  ),
                 ),
                 SizedBox(
                   height: 20,
