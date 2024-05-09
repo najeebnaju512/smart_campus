@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:smart_campus_projects/core/utils/app_utils.dart';
-import 'package:smart_campus_projects/presentation/admin_module/scanner_page/controller/scanner_controller.dart';
 
 import '../../../../core/constants/color_constants.dart';
+import '../controller/scanner_controller.dart';
 
 class ScannerScreen extends StatefulWidget {
   @override

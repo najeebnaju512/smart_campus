@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smart_campus_projects/config/app_config.dart';
 import 'package:smart_campus_projects/core/utils/app_utils.dart';
-import 'package:smart_campus_projects/presentation/admin_module/home/view/admin_home.dart';
 import 'package:smart_campus_projects/repository/api/student_login_screen/service/student_login_service.dart';
 
+import '../../../security_module/home/view/home.dart';
 import '../../../students_module/profile_page/view/profile_page.dart';
 
 class LoginController extends ChangeNotifier {
@@ -22,7 +22,7 @@ class LoginController extends ChangeNotifier {
       //     context, MaterialPageRoute(builder: (context) => AdminHome()));
       Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => AdminHome()),
+            MaterialPageRoute(builder: (context) => Home()),
             (route) => false);
     }
     StudentloginService.postLogin(data).then((resData) {

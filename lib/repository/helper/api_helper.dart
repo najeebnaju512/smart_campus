@@ -8,7 +8,7 @@ import '../../config/app_config.dart';
 class ApiHelper {
   static Map<String, String> getApiHeader({String? access, String? dbName}) {
     if (access != null) {
-      return {'Content-Type': 'application/json', 'Authorization': 'Bearer $access'};
+      return {'Content-Type': 'application/json', 'Authorization': 'Bearer $access' };
     } else if (dbName != null) {
       return {'Content-Type': 'application/json', 'dbName': dbName};
     } else {

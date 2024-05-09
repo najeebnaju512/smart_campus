@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:smart_campus_projects/core/utils/app_utils.dart';
-import 'package:smart_campus_projects/presentation/admin_module/result_page/view/result_page.dart';
 import '../../../../repository/api/admin_module/add_attendence/service/scan_service.dart';
+import '../../result_page/view/result_page.dart';
 
 class ScanController extends ChangeNotifier {
   postId(BuildContext context, {required String id}) {

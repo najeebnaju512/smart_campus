@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:smart_campus_projects/core/constants/color_constants.dart';
-import 'package:smart_campus_projects/presentation/admin_module/scanner_page/view/scanner_screen.dart';
 
-class AdminHome extends StatefulWidget {
-  const AdminHome({super.key});
+import '../../scanner_page/view/scanner_screen.dart';
+
+class Home extends StatefulWidget {
+  const Home({super.key});
 
   @override
-  State<AdminHome> createState() => _AdminHomeState();
+  State<Home> createState() => _HomeState();
 }
 
-class _AdminHomeState extends State<AdminHome> {
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
