@@ -106,25 +106,25 @@ class _SplashScreenState extends State<SplashScreen> {
                         color: ColorConstants.mainWhite, fontSize: 20),
                   ),
                 ),
-                ElevatedButton(
-                  style: ButtonStyle(
-                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10))),
-                      // minimumSize: MaterialStatePropertyAll(Size(110, )),
-                      backgroundColor:
-                          MaterialStateProperty.all(ColorConstants.mainBlack)),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => LoginScreen()));
-                  },
-                  child: Text(
-                    "Exit",
-                    style: TextStyle(
-                        color: ColorConstants.mainWhite, fontSize: 18),
-                  ),
-                ),
+                // ElevatedButton(
+                //   style: ButtonStyle(
+                //       shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                //           borderRadius: BorderRadius.circular(10))),
+                //       // minimumSize: MaterialStatePropertyAll(Size(110, )),
+                //       backgroundColor:
+                //           MaterialStateProperty.all(ColorConstants.mainBlack)),
+                //   onPressed: () {
+                //     Navigator.push(
+                //         context,
+                //         MaterialPageRoute(
+                //             builder: (context) => LoginScreen()));
+                //   },
+                //   child: Text(
+                //     "Exit",
+                //     style: TextStyle(
+                //         color: ColorConstants.mainWhite, fontSize: 18),
+                //   ),
+                // ),
               ],
             ),
           ),

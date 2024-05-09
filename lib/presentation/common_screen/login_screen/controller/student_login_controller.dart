@@ -10,10 +10,6 @@ import 'package:smart_campus_projects/repository/api/student_login_screen/servic
 
 import '../../../students_module/profile_page/view/profile_page.dart';
 
-
-
-
-
 class LoginController extends ChangeNotifier {
   bool visibility = false;
   late SharedPreferences sharedPreferences;
@@ -21,14 +17,23 @@ class LoginController extends ChangeNotifier {
   onLogin(BuildContext context, {required String id, required String pass}) {
     log("LoginController -> onLogin()");
     var data = {"admission_number": id, "password": pass};
-    if(id == "admin" && pass == "1234"){
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>AdminHome()));
+    if (id == "admin" && pass == "1234") {
+      // Navigator.push(
+      //     context, MaterialPageRoute(builder: (context) => AdminHome()));
+      Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => AdminHome()),
+            (route) => false);
     }
     StudentloginService.postLogin(data).then((resData) {
       log("token -> ${resData["data"]["access_token"]}");
       if (resData["status"] == 1) {
         storeLoginData(resData);
-        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+        // Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => ProfilePage()),
+            (route) => false);
         AppUtils.getAccessKey();
       } else {
         AppUtils.oneTimeSnackBar("Login Failed", context: context);

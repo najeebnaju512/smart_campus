@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_campus_projects/core/constants/color_constants.dart';
+import 'package:smart_campus_projects/presentation/admin_module/scanner_page/view/scanner_screen.dart';
 
 class AdminHome extends StatefulWidget {
   const AdminHome({super.key});
@@ -23,7 +24,9 @@ class _AdminHomeState extends State<AdminHome> {
       body: Container(
         height: size.height,
         width: size.width,
-        decoration: BoxDecoration(gradient: LinearGradient(colors: ColorConstants.gradientColors)),
+        decoration: BoxDecoration(
+            gradient: LinearGradient(colors: ColorConstants.gradientColors)),
+        child: ScannerScreen()
       ),
     );
   }

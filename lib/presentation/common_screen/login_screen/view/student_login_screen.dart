@@ -24,8 +24,10 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
+          padding: EdgeInsets.all(10),
           height: screenHeight,
-          decoration: BoxDecoration(gradient: LinearGradient(colors: ColorConstants.gradientColors)),
+          decoration: BoxDecoration(
+              gradient: LinearGradient(colors: ColorConstants.gradientColors)),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Column(
@@ -63,7 +65,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     name: "ID Number",
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(),
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30)),
                     ),
                   ),
                 ),
@@ -77,7 +80,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     decoration: InputDecoration(
                       fillColor: ColorConstants.mainWhite,
                       filled: true,
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30)),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.orange),
                       ),
@@ -98,12 +102,17 @@ class _LoginScreenState extends State<LoginScreen> {
                               Size(220, 60),
                             ),
                             shape: MaterialStatePropertyAll(
-                                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-                            backgroundColor: MaterialStatePropertyAll(ColorConstants.primaryColor),
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10))),
+                            backgroundColor: MaterialStatePropertyAll(
+                                ColorConstants.primaryColor),
                           ),
                           onPressed: () {
                             control.onLogin(context,
-                                id: idController.text.trim(), pass: passController.text.trim());
+                                id: idController.text.trim(),
+                                pass: passController.text.trim());
+                            idController.clear();
+                            passController.clear();
                           },
                           child: Text(
                             "Login",

@@ -30,6 +30,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.blue),
       body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
