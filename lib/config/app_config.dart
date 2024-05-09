@@ -1,6 +1,6 @@
 class AppConfig {
   //baseurl is set here
-  static String baseurl = "http://10.11.0.179:8000/";
+  static String baseurl = "http://10.11.1.31:8000/";
 
   //mediaUrl is set here
   static String mediaUrl = "http://10.11.0.179:8000";
