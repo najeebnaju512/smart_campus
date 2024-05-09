@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_campus_projects/presentation/common_screen/login_screen/controller/student_login_controller.dart';
 import 'package:smart_campus_projects/presentation/common_screen/splash_screen/view/splash_screen.dart';
-import 'package:smart_campus_projects/presentation/profile_page/controller/profile_page_controller.dart';
+import 'package:smart_campus_projects/presentation/students_module/profile_page/controller/profile_page_controller.dart';
 
-import 'presentation/students_module/student_login_screen/controller/student_login_controller.dart';
 
 void main() {
   runApp(MultiProvider(
     providers: [
-      ChangeNotifierProvider(create: (context) => StudentLoginController()),
+      ChangeNotifierProvider(create: (context) => LoginController()),
       ChangeNotifierProvider(create: (context) => ProfilePageController())
       // ChangeNotifierProvider(create: (context) => ),
     ],

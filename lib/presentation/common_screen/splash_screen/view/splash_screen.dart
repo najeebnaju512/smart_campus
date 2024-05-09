@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_campus_projects/core/constants/color_constants.dart';
-import 'package:smart_campus_projects/presentation/students_module/student_login_screen/view/student_login_screen.dart';
+
+import '../../login_screen/view/student_login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -97,7 +98,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => StudentLoginScree()));
+                            builder: (context) => LoginScreen()));
                   },
                   child: Text(
                     "Let's Start",
@@ -116,7 +117,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => StudentLoginScree()));
+                            builder: (context) => LoginScreen()));
                   },
                   child: Text(
                     "Exit",

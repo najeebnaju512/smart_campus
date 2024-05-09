@@ -5,14 +5,14 @@ import 'package:smart_campus_projects/global_widgets/reusable_textfield_widget.d
 
 import '../controller/student_login_controller.dart';
 
-class StudentLoginScree extends StatefulWidget {
-  const StudentLoginScree({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<StudentLoginScree> createState() => _StudentLoginScreeState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _StudentLoginScreeState extends State<StudentLoginScree> {
+class _LoginScreenState extends State<LoginScreen> {
   var idController = TextEditingController();
   var passController = TextEditingController();
 
@@ -90,7 +90,7 @@ class _StudentLoginScreeState extends State<StudentLoginScree> {
                 ),
                 Padding(
                     padding: EdgeInsets.only(left: 16, right: 16),
-                    child: Consumer<StudentLoginController>(
+                    child: Consumer<LoginController>(
                       builder: (context, control, _) {
                         return ElevatedButton(
                           style: ButtonStyle(
