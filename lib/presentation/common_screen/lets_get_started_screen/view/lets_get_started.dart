@@ -3,14 +3,14 @@ import 'package:smart_campus_projects/core/constants/color_constants.dart';
 
 import '../../login_screen/view/student_login_screen.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class LetsGetStarted extends StatefulWidget {
+  const LetsGetStarted({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<LetsGetStarted> createState() => _LetsGetStartedState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _LetsGetStartedState extends State<LetsGetStarted> {
   @override
   // void initState() {
   //   Timer(Duration(seconds: 4), () {
@@ -95,10 +95,8 @@ class _SplashScreenState extends State<SplashScreen> {
                       backgroundColor: MaterialStateProperty.all(
                           ColorConstants.primaryColor)),
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => LoginScreen()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
                   },
                   child: Text(
                     "Let's Start",
