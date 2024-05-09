@@ -13,4 +13,6 @@ class AppConfig {
 
   //key to check whether the user is already registered  or not and navigate to login page on every other startup since registering.
   static const String status = "status";
+
+  static const String seen = "seen";
 }

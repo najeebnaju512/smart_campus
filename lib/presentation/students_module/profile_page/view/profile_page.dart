@@ -27,12 +27,13 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.blue),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
+        height: size.height,
+        width: size.width,
         decoration: BoxDecoration(
           gradient: LinearGradient(colors: ColorConstants.gradientColors),
         ),
