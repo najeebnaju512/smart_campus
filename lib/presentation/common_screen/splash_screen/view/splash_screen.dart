@@ -1,6 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:smart_campus_projects/core/constants/color_constants.dart';
-import 'package:smart_campus_projects/presentation/student_login_screen/view/student_login_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smart_campus_projects/config/app_config.dart';
+import 'package:smart_campus_projects/presentation/common_screen/lets_get_started_screen/view/lets_get_started.dart';
+import 'package:smart_campus_projects/presentation/common_screen/login_screen/view/student_login_screen.dart';
+
+import '../../../../core/constants/color_constants.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -10,123 +16,39 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  //Function to check if the app is opened for the first time and to show lets get started screen
+  _checkSeen() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    bool _seen = (sharedPreferences.getBool(AppConfig.seen) ?? false);
+    if (_seen) {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+    } else {
+      await sharedPreferences.setBool(AppConfig.seen, true);
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LetsGetStarted()));
+    }
+  }
+
   @override
-  // void initState() {
-  //   Timer(Duration(seconds: 4), () {
-  //     Navigator.pushReplacement(context, MaterialPageRoute(builder:(context)=>StudentLoginScree()));
-  //   });
-  //   super.initState();
-  //
-  // }
+  void initState() {
+    Timer(Duration(seconds: 3), () {
+      _checkSeen();
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-          height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(colors: ColorConstants.gradientColors)),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const Image(image: AssetImage("assets/images/logo.png")),
-                const Image(image: AssetImage("assets/images/smartCampus.png")),
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      const TextSpan(
-                        text: "Smart",
-                        style: TextStyle(
-                            color: Colors.orange,
-                            fontFamily: "Nexa Bold",
-                            fontSize: 30),
-                      ),
-                      TextSpan(
-                        text: "Campus",
-                        style: TextStyle(
-                            color: Colors.blueAccent.shade700,
-                            fontFamily: "Nexa Bold",
-                            fontSize: 30),
-                      ),
-                    ],
-                  ),
-                ),
-                Column(
-                  children: [
-                    Text(
-                      "Welcome to SmartCampus",
-                      style: TextStyle(
-                          color: ColorConstants.mainWhite,
-                          fontSize: 24,
-                          fontFamily: "Nexa Regular"),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "Experience the future of student identification with our electronic Student ID Card App!",
-                      style: TextStyle(
-                          fontFamily: "Nexa Regular",
-                          fontSize: 18,
-                          color: ColorConstants.mainWhite),
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "Your digital identity is securely stored on your smartphone",
-                      style: TextStyle(
-                          fontFamily: "Nexa Regular",
-                          fontSize: 18,
-                          color: ColorConstants.mainWhite),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-                ElevatedButton(
-                  style: ButtonStyle(
-                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10))),
-                      minimumSize: MaterialStatePropertyAll(Size(200, 50)),
-                      backgroundColor: MaterialStateProperty.all(
-                          ColorConstants.primaryColor)),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => StudentLoginScree()));
-                  },
-                  child: Text(
-                    "Let's Start",
-                    style: TextStyle(
-                        color: ColorConstants.mainWhite, fontSize: 20),
-                  ),
-                ),
-                ElevatedButton(
-                  style: ButtonStyle(
-                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10))),
-                      // minimumSize: MaterialStatePropertyAll(Size(110, )),
-                      backgroundColor:
-                          MaterialStateProperty.all(ColorConstants.mainBlack)),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => StudentLoginScree()));
-                  },
-                  child: Text(
-                    "Exit",
-                    style: TextStyle(
-                        color: ColorConstants.mainWhite, fontSize: 18),
-                  ),
-                ),
-              ],
-            ),
-          ),
+    var size = MediaQuery.sizeOf(context);
+    return Scaffold(
+      body: Container(
+        height: size.height,
+        width: size.width,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(colors: ColorConstants.gradientColors),
+        ),
+        child: Image.asset(
+          "assets/images/uts_logo_shape.png",
+          scale: size.width * .005,
         ),
       ),
     );
