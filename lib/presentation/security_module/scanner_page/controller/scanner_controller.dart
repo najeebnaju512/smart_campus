@@ -12,13 +12,14 @@ class ScanController extends ChangeNotifier {
     ScanService.postId(id).then((data) {
       if (data["status"] == 1) {
         isAdded = true;
-        AppUtils.oneTimeSnackBar("Attendance Added Successfully",
-            context: context, bgColor: Colors.green);
+        log(isAdded.toString());
         Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) => ResultScreen(
                     status: isAdded, username: data["data"]["username"])));
+        AppUtils.oneTimeSnackBar("Attendance Added Successfully",
+            context: context, bgColor: Colors.green);
       } else {
         isAdded = false;
         AppUtils.oneTimeSnackBar("Attendance Adding Failed",

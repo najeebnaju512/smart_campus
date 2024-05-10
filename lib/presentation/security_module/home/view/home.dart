@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         backgroundColor: Colors.blue,
         title: Text(
-          "Admin Control",
+          "Security Control",
           style: TextStyle(fontFamily: "Nexa Bold", fontSize: 30),
         ),
       ),
@@ -27,7 +27,24 @@ class _HomeState extends State<Home> {
         width: size.width,
         decoration: BoxDecoration(
             gradient: LinearGradient(colors: ColorConstants.gradientColors)),
-        child: ScannerScreen()
+        child: Center(
+          child: ElevatedButton(
+            style: ButtonStyle(
+                shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10))),
+                minimumSize: MaterialStatePropertyAll(Size(200, 50)),
+                backgroundColor:
+                    MaterialStateProperty.all(ColorConstants.primaryColor)),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ScannerScreen()));
+            },
+            child: Text(
+              "Scan",
+              style: TextStyle(color: ColorConstants.mainWhite, fontSize: 20),
+            ),
+          ),
+        ),
       ),
     );
   }

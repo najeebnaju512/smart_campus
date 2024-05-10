@@ -1,9 +1,9 @@
 class AppConfig {
   //baseurl is set here
-  static String baseurl = "http://10.11.1.31:8000/";
+  static String baseurl = "http://10.11.0.207:8000/";
 
   //mediaUrl is set here
-  static String mediaUrl = "http://10.11.1.31:8000";
+  static String mediaUrl = "http://10.11.0.207:8000";
 
   //noImage is set here
   static String noImage = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
