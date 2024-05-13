@@ -20,26 +20,25 @@ class LoginController extends ChangeNotifier {
     if (id == "admin" && pass == "1234") {
       // Navigator.push(
       //     context, MaterialPageRoute(builder: (context) => AdminHome()));
-      Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => Home()),
-            (route) => false);
+      Navigator.pushAndRemoveUntil(context,
+          MaterialPageRoute(builder: (context) => Home()), (route) => false);
+    } else {
+      StudentloginService.postLogin(data).then((resData) {
+        log("token -> ${resData["data"]["access_token"]}");
+        if (resData["status"] == 1) {
+          storeLoginData(resData);
+          // Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => ProfilePage()),
+              (route) => false);
+          AppUtils.getAccessKey();
+        } else {
+          AppUtils.oneTimeSnackBar("Login Failed", context: context);
+        }
+        notifyListeners();
+      });
     }
-    StudentloginService.postLogin(data).then((resData) {
-      log("token -> ${resData["data"]["access_token"]}");
-      if (resData["status"] == 1) {
-        storeLoginData(resData);
-        // Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => ProfilePage()),
-            (route) => false);
-        AppUtils.getAccessKey();
-      } else {
-        AppUtils.oneTimeSnackBar("Login Failed", context: context);
-      }
-      notifyListeners();
-    });
   }
 
   storeLoginData(receivedData) async {
