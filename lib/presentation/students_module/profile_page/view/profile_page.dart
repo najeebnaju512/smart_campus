@@ -32,8 +32,8 @@ class _ProfilePageState extends State<ProfilePage> {
     var size = MediaQuery.sizeOf(context);
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(backgroundColor: Colors.blue),
         body: SingleChildScrollView(
+          physics: NeverScrollableScrollPhysics(),
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             height: size.height,
@@ -80,7 +80,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           ],
                         ),
                         SizedBox(
-                          height: 50,
+                          height: 10,
                         ),
                         Column(
                           children: [
@@ -92,7 +92,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   color: Colors.black),
                             ),
                             SizedBox(
-                              height: 15,
+                              height: 10,
                             ),
                             Text(
                               "DOB:${controller.profileModel.data?.dateOfBirth} ",
@@ -100,7 +100,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   fontFamily: "Nexa Bold", fontSize: 30),
                             ),
                             SizedBox(
-                              height: 15,
+                              height: 10,
                             ),
                             Text(
                               "Blood: ${controller.profileModel.data?.bloodGroup}",
@@ -108,7 +108,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   fontFamily: "Nexa Bold", fontSize: 30),
                             ),
                             SizedBox(
-                              height: 15,
+                              height: 10,
                             ),
                             Text(
                               "📞 ${controller.profileModel.data?.phoneNumber}",
@@ -116,7 +116,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   fontFamily: "Nexa Bold", fontSize: 30),
                             ),
                             SizedBox(
-                              height: 15,
+                              height: 10,
                             ),
                             Text(
                               "${controller.profileModel.data?.department}",
@@ -124,7 +124,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   fontFamily: "Nexa Bold", fontSize: 20),
                             ),
                             SizedBox(
-                              height: 15,
+                              height: 10,
                             ),
                             Text(
                               "${controller.profileModel.data?.batch}",
@@ -132,7 +132,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   fontFamily: "Nexa Bold", fontSize: 20),
                             ),
                             SizedBox(
-                              height: 15,
+                              height: 10,
                             ),
                           ],
                         ),
@@ -141,7 +141,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           height: 200,
                         ),
                         SizedBox(
-                          height: 15,
+                          height: 10,
                         ),
                         TextButton(
                           onPressed: () {
