@@ -10,16 +10,17 @@ class DoubtService {
       var decodedData = await ApiHelper.postData(
         endPoint: "enqui-student/",
         body: data,
-        header:  apiHeader(access: await AppUtils.getAccessKey()),
+        header: apiHeader(access: await AppUtils.getAccessKey()),
       );
       return decodedData;
     } catch (e) {
       log("$e");
     }
   }
+
   static Map<String, String> apiHeader({String? access, String? dbName}) {
     if (access != null) {
-      return {'Accept': '*/*', 'Authorization': 'Bearer $access' };
+      return {'Accept': '*/*', 'Authorization': 'Bearer $access'};
     } else if (dbName != null) {
       return {'Content-Type': 'application/json', 'dbName': dbName};
     } else {

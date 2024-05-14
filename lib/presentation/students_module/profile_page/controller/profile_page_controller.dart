@@ -8,12 +8,11 @@ import 'package:smart_campus_projects/repository/api/profile_page/service/profil
 class ProfilePageController extends ChangeNotifier{
   ProfileModel profileModel=ProfileModel();
   bool isLoading = false;
-
   fetchData(BuildContext context){
     log("ProfilePageController -> fetchData()");
     isLoading = true;
     notifyListeners();
-    ProfilePageService.fetchData().then((value) {
+    ProfilePageService.fetchData().then((value) {// fetching data of logged in student
       if(value["status"]==1){
         profileModel = ProfileModel.fromJson(value);
         isLoading=false;

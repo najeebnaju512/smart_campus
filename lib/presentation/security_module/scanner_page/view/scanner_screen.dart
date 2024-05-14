@@ -16,10 +16,8 @@ class _ScannerScreenState extends State<ScannerScreen> {
   String _barcode = '';
   @override
   void initState() {
+    _scanBarcode(); // Automatically trigger barcode scanning when the app starts
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _scanBarcode();
-    }); // Automatically trigger barcode scanning when the app starts
   }
 
   Future<void> _scanBarcode() async {
@@ -35,13 +33,13 @@ class _ScannerScreenState extends State<ScannerScreen> {
       });
       if (barcode == '-1') {
         // User cancelled scanning, navigate to another screen or perform any action
-        AppUtils.oneTimeSnackBar("Scan Failed",
+        AppUtils.oneTimeSnackBar("Scan Canceled",
             context: context, bgColor: Colors.red);
         return; // Exit the method if user cancels
       }
       // Navigate to the next screen after scanning
       if (_barcode.isNotEmpty) {
-        scanController.postId(context, id: barcode);
+        scanController.postId(context, id: barcode); // datas got from scaning has passed to controller class
       }
     } on PlatformException catch (e) {
       print("Error scanning barcode: ${e.message}");

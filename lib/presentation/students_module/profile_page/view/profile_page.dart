@@ -16,13 +16,13 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   fetchData() {
     Provider.of<ProfilePageController>(context, listen: false)
-        .fetchData(context);
+        .fetchData(context); // function to fech the details of student who has loged in 
   }
 
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      fetchData();
+      fetchData(); // function to get the  datas of student who has logegd in automatically  
     });
     super.initState();
   }
@@ -134,10 +134,6 @@ class _ProfilePageState extends State<ProfilePage> {
                             SizedBox(
                               height: 15,
                             ),
-                            // Text(
-                            //   "91212872",
-                            //   style: TextStyle(fontFamily: "Nexa Bold", fontSize: 20),
-                            // ),
                           ],
                         ),
                         Image.network(

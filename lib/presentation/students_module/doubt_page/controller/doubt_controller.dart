@@ -5,7 +5,7 @@ import 'package:smart_campus_projects/repository/api/doubt_page/service/doubt_se
 class DoubtController extends ChangeNotifier {
   postMsg(BuildContext context, {required String msg}) {
     Map<String,String> data = {"description": msg};
-    DoubtService.postmsg(data).then((resData) {
+    DoubtService.postmsg(data).then((resData) {//passing enquiry message to backend 
       if (resData["status"] == 1) {
         AppUtils.oneTimeSnackBar("Enquiry Added Successfully",
             context: context, bgColor: Colors.green);
