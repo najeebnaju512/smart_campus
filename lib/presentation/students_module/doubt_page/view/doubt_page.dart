@@ -16,9 +16,6 @@ class _DoubtPageState extends State<DoubtPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.blue,
-      // ),
       body: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height,
@@ -79,7 +76,6 @@ class _DoubtPageState extends State<DoubtPage> {
                       child: TextField(
                         controller: msgController,
                         maxLines: 20,
-                        // TextField properties can be added here
                         decoration: InputDecoration(
                           hintText: 'Enter your text',
                           border: InputBorder.none,
@@ -96,12 +92,11 @@ class _DoubtPageState extends State<DoubtPage> {
                           shape: MaterialStatePropertyAll(
                               RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10))),
-                          // minimumSize: MaterialStatePropertyAll(Size(200, 90)),
                           backgroundColor: MaterialStateProperty.all(
                               ColorConstants.primaryColor)),
                       onPressed: () {
                         controller.postMsg(context,
-                            msg: msgController.text.trim());
+                            msg: msgController.text.trim());  // enquiry message passed to controller class
                         msgController.clear();
                       },
                       child: Text(

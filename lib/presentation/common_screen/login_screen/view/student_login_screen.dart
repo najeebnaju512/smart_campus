@@ -104,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           onPressed: () {
                             control.onLogin(context,
-                                id: idController.text.trim(), pass: passController.text.trim());
+                                id: idController.text.trim(), pass: passController.text.trim());  //controller class function is done through this method where navigation to next page is also done
                             idController.clear();
                             passController.clear();
                           },
@@ -119,25 +119,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                     )),
                 const SizedBox(height: 30),
-                // ElevatedButton(
-                //   style: ButtonStyle(
-                //       shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                //           borderRadius: BorderRadius.circular(10))),
-                //       minimumSize: MaterialStatePropertyAll(Size(80, 25)),
-                //       backgroundColor:
-                //           MaterialStateProperty.all(ColorConstants.mainBlack)),
-                //   onPressed: () {
-                //     Navigator.push(
-                //         context,
-                //         MaterialPageRoute(
-                //             builder: (context) => StudentLoginScree()));
-                //   },
-                //   child: Text(
-                //     "Exit",
-                //     style: TextStyle(
-                //         color: ColorConstants.mainWhite, fontSize: 20),
-                //   ),
-                // ),
                 Spacer(),
                 Row(
                   children: [

@@ -8,11 +8,10 @@ import '../../result_page/view/result_page.dart';
 class ScanController extends ChangeNotifier {
   postId(BuildContext context, {required String id}) {
     late bool isAdded;
-    log("ScanController++++==$id");
-    ScanService.postId(id).then((data) {
-      if (data["status"] == 1) {
+    ScanService.postId(id).then((data) { //data is passed to backend 
+      if (data["status"] == 1) {// if suceeded navigate to result screen with sucesess message
         isAdded = true;
-        log(isAdded.toString());
+        log("isAdded=$isAdded");
         Navigator.push(
             context,
             MaterialPageRoute(
@@ -20,7 +19,7 @@ class ScanController extends ChangeNotifier {
                     status: isAdded, username: data["data"]["username"])));
         AppUtils.oneTimeSnackBar("Attendance Added Successfully",
             context: context, bgColor: Colors.green);
-      } else {
+      } else { // else navigate to result screen with failed message
         isAdded = false;
         AppUtils.oneTimeSnackBar("Attendance Adding Failed",
             context: context, bgColor: Colors.red);

@@ -12,14 +12,6 @@ class LetsGetStarted extends StatefulWidget {
 
 class _LetsGetStartedState extends State<LetsGetStarted> {
   @override
-  // void initState() {
-  //   Timer(Duration(seconds: 4), () {
-  //     Navigator.pushReplacement(context, MaterialPageRoute(builder:(context)=>StudentLoginScree()));
-  //   });
-  //   super.initState();
-  //
-  // }
-  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -104,25 +96,6 @@ class _LetsGetStartedState extends State<LetsGetStarted> {
                         color: ColorConstants.mainWhite, fontSize: 20),
                   ),
                 ),
-                // ElevatedButton(
-                //   style: ButtonStyle(
-                //       shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                //           borderRadius: BorderRadius.circular(10))),
-                //       // minimumSize: MaterialStatePropertyAll(Size(110, )),
-                //       backgroundColor:
-                //           MaterialStateProperty.all(ColorConstants.mainBlack)),
-                //   onPressed: () {
-                //     Navigator.push(
-                //         context,
-                //         MaterialPageRoute(
-                //             builder: (context) => LoginScreen()));
-                //   },
-                //   child: Text(
-                //     "Exit",
-                //     style: TextStyle(
-                //         color: ColorConstants.mainWhite, fontSize: 18),
-                //   ),
-                // ),
               ],
             ),
           ),

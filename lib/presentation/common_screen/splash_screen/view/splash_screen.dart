@@ -20,9 +20,9 @@ class _SplashScreenState extends State<SplashScreen> {
   _checkSeen() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     bool _seen = (sharedPreferences.getBool(AppConfig.seen) ?? false);
-    if (_seen) {
+    if (_seen) { //if it has opened before then it will navigate to login screen
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
-    } else {
+    } else {  // else to getstarted screen
       await sharedPreferences.setBool(AppConfig.seen, true);
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LetsGetStarted()));
     }

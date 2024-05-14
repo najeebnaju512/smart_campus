@@ -39,7 +39,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
       }
       // Navigate to the next screen after scanning
       if (_barcode.isNotEmpty) {
-        scanController.postId(context, id: barcode);
+        scanController.postId(context, id: barcode); // datas got from scaning has passed to controller class
       }
     } on PlatformException catch (e) {
       print("Error scanning barcode: ${e.message}");

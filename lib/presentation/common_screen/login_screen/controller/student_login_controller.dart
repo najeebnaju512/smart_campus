@@ -17,24 +17,20 @@ class LoginController extends ChangeNotifier {
   onLogin(BuildContext context, {required String id, required String pass}) {
     log("LoginController -> onLogin()");
     var data = {"admission_number": id, "password": pass};
-    if (id == "admin" && pass == "1234") {
-      // Navigator.push(
-      //     context, MaterialPageRoute(builder: (context) => AdminHome()));
+    if (id == "admin" && pass == "1234") { //if the values entered is id = "admin" && pass = "1234" then navigate to home page of security to scan
       Navigator.pushAndRemoveUntil(context,
           MaterialPageRoute(builder: (context) => Home()), (route) => false);
-    } else {
+    } else { // else case Api is called to fetch data of students
       StudentloginService.postLogin(data).then((resData) {
-        log("token -> ${resData["data"]["access_token"]}");
-        if (resData["status"] == 1) {
-          storeLoginData(resData);
-          // Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+        if (resData["status"] == 1) { // if suceses navigate to profile of student
+          storeLoginData(resData);  // store data recieved from api"backend"
           Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => ProfilePage()),
               (route) => false);
           AppUtils.getAccessKey();
-        } else {
-          AppUtils.oneTimeSnackBar("Login Failed", context: context);
+        } else { //if failed snack bar is shown
+          AppUtils.oneTimeSnackBar("Login Failed", context: context,bgColor: Colors.red);
         }
         notifyListeners();
       });
@@ -45,7 +41,6 @@ class LoginController extends ChangeNotifier {
     log("LoginController -> storeLoginData()");
     sharedPreferences = await SharedPreferences.getInstance();
     String storeData = jsonEncode(receivedData);
-    log("storedData -> $storeData");
     sharedPreferences.setString(AppConfig.loginData, storeData);
   }
 }
