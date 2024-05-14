@@ -16,7 +16,6 @@ class AppUtils {
 
     if (sharedPreferences.get(AppConfig.loginData) != null) {
       final access = jsonDecode(sharedPreferences.get(AppConfig.loginData) as String)['data']["access_token"];
-      log("access_token -> $access");
       return access;
     } else {
       log("getAccessKey() returned null");
