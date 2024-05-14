@@ -26,7 +26,6 @@ class ApiHelper {
       var response = await http.get(url, headers: header);
       log("StatusCode -> ${response.statusCode}");
       var decodedData = jsonDecode(response.body);
-      log("Response -> ${response.body}");
       return decodedData;
     } catch (e) {
       log("$e");
@@ -39,8 +38,6 @@ class ApiHelper {
     Map<String, String>? header,
   }) async {
     log("ApiHelper -> postData()");
-    log("Body ->  $body");
-    log("Header -> $header");
     final url = Uri.parse(AppConfig.baseurl + endPoint);
     log("Url -> $url");
     try {
