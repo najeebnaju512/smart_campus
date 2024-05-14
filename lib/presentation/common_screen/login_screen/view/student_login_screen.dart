@@ -85,7 +85,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                Center(child: Text("Forgot your ID Number or Password? ?")),
                 const SizedBox(
                   height: 30,
                 ),
