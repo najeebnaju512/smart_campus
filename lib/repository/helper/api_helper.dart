@@ -44,7 +44,6 @@ class ApiHelper {
       var response = await http.post(url, body: body, headers: header);
       log("StatusCode -> ${response.statusCode}");
       var decodedData = jsonDecode(response.body);
-      log("Response -> ${response.body}");
       return decodedData;
     } catch (e) {
       log("$e");
