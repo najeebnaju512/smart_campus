@@ -15,14 +15,14 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   fetchData() {
-    Provider.of<ProfilePageController>(context, listen: false)
-        .fetchData(context); // function to fech the details of student who has loged in 
+    Provider.of<ProfilePageController>(context, listen: false).fetchData(
+        context); // function to fech the details of student who has loged in
   }
 
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      fetchData(); // function to get the  datas of student who has logegd in automatically  
+      fetchData(); // function to get the  datas of student who has logegd in automatically
     });
     super.initState();
   }
@@ -59,12 +59,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                   color: ColorConstants.secondaryColor,
                                   borderRadius: BorderRadius.circular(30),
                                   image: DecorationImage(
-                                      image: controller
-                                                  .profileModel.data?.image ==
-                                              null
-                                          ? NetworkImage("${AppConfig.noImage}")
-                                          : NetworkImage(
-                                              "${AppConfig.mediaUrl}${controller.profileModel.data?.image}"),
+                                      image: AssetImage(
+                                          "assets/images/person.png"),
                                       fit: BoxFit.cover)),
                             ),
                             Container(
